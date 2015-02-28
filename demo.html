@@ -4,6 +4,7 @@
     <!-- (use quintus-all.min.js for production) -->
     <script src='http://cdn.html5quintus.com/v0.2.0/quintus-all.js'></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
   </head>
    <body>
      <canvas id='game' width='500' height='500'></canvas>
@@ -37,7 +38,8 @@
           this._super(p, {
             sheet: "player",  // Setting a sprite sheet sets sprite width and height
             x: 410,           // You can also set additional properties that can
-            y: 90            // be overridden on object creation
+            y: 90,            // be overridden on object creation
+            keys: []          // Think of these like dungeon keys from zelda
           });
 
           // Add in pre-made components to get up and running quickly
@@ -52,6 +54,23 @@
               Q.stageScene("endGame",1, { label: "You Won!" });
               // Remove the player to prevent them from moving
               this.destroy();
+            }
+          });
+        }
+      });
+
+      // Items are simple, but can include an unique name / id.
+      Q.Sprite.extend("Item", {
+        init: function(p) {
+          this._super(p, { sheet: "tower", objName: "tower" });
+
+          this.on("hit.sprite", function(collision) {
+            if (collision.obj.isA("Player")) {
+              // Put the item in Player.keys.
+              collision.obj.p.keys.push(this.p.objName)
+              Q.stage().pause()
+              Q.stageScene("textbox", 1, { label: "You have found an item!" });
+              this.destroy()
             }
           });
         }
@@ -74,8 +93,16 @@
           this.on("hit.sprite",function(collision) {
             if(collision.obj.isA("Player")) {
               Q.stage().pause()
-              Q.stageScene("textbox", 1, { label: "You Died" });
-              this.destroy();
+              console.log(collision.obj.p.items)
+              // Check if Player has the 'dontgivea' key
+              var keyIndex = collision.obj.p.keys.indexOf("dontgivea")
+              if (keyIndex == -1) {
+                Q.stageScene("textbox", 1, { label: "To cross this barrier you must first get an item from somewhere." })
+              } else {
+                collision.obj.p.keys.splice(keyIndex, 1) // Remove key from Player.keys
+                Q.stageScene("textbox", 1, { label: "You have found my weakness." })
+                this.destroy()
+              }
             }
           });
         }
@@ -95,7 +122,7 @@
           this.on("bump.left,bump.right,bump.bottom",function(collision) {
             if(collision.obj.isA("Player")) {
               Q.stage().pause()
-              Q.stageScene("textbox", 1, { label: "You Died" });
+              Q.stageScene("textbox", 1, { label: "You were killed by an ememy." });
               collision.obj.destroy();
             }
           });
@@ -137,7 +164,6 @@
 
       // Display a text box over game content.
       Q.scene("textbox", function(stage) {
-        //stage.pause()
 
         var container = stage.insert(new Q.UI.Container({
           x: Q.width/2, y: Q.height/4, fill: "rgba(50,150,200,1.0)", h: 200, w: 500
@@ -145,7 +171,7 @@
 
         var button = container.insert(new Q.UI.Button({ x: 180, y: 60, fill: "#CCCCCC",
         label: "unpause" }))
-        container.insert(new Q.UI.Text({x: -120, y: -80, fill: "#CCCCCC", size: 14, label: "this is text. i like text. it's awesome."}))
+        container.insert(new Q.UI.Text({x: -120, y: -80, fill: "#CCCCCC", size: 14, label: stage.options.label}))
 
         // TODO - Add key press event to kill textbox.
         button.on("click", function() {
