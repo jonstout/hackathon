@@ -1,0 +1,8 @@
+{
+  "enemies" : [
+    ["Enemy", {"x": 700, "y": 0, "sheet": "enemy"}],
+    ["Enemy", {"x": 508, "y": 0, "sheet": "enemy"}],
+    ["Enemy", {"x": 508, "y": 0, "sheet": "enemy"}],
+    ["Enemy", {"x": 508, "y": 0, "sheet": "enemy"}]
+  ]
+}
