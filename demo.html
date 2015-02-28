@@ -18,7 +18,7 @@
   <body>
     <canvas id='game' width='500' height='500'></canvas>
 
-    <!-- Global scripts -->
+    <!-- Global variables and scripts -->
     <script>
       // Full screen hack.
       canvas = document.getElementById("game");
@@ -37,57 +37,16 @@
       var textboxScene = 1
     </script>
 
-    <script>
-      /*
-      ... Actual game code goes here ...
-      */
-
-      // Sprites can be simple, the Tower sprite just sets a custom sprite sheet
-      Q.Sprite.extend("Tower", {
-        init: function(p) {
-          this._super(p, { sheet: 'tower' });
-        }
-      });
-
-      // Create the Enemy class to add in some baddies
-      Q.Sprite.extend("Enemy",{
-        init: function(p) {
-          this._super(p, { sheet: 'enemy', vx: 100 });
-
-          // Enemies use the Bounce AI to change direction
-          // whenver they run into something.
-          this.add('2d, aiBounce');
-
-          // Listen for a sprite collision, if it's the player,
-          // end the game unless the enemy is hit on top
-          this.on("bump.left,bump.right,bump.bottom",function(collision) {
-            if(collision.obj.isA("Player")) {
-              Q.stage().pause()
-              Q.stageScene("textbox", window.textboxScene, { label: "You were killed by an ememy." });
-              collision.obj.destroy();
-            }
-          });
-
-          // If the enemy gets hit on the top, destroy it
-          // and give the user a "hop"
-          this.on("bump.top",function(collision) {
-            if(collision.obj.isA("Player")) {
-              this.destroy();
-              collision.obj.p.vy = -300;
-            }
-          });
-        }
-      });
-    </script>
-
     <!-- Game objects -->
     <script src="./src/player.js"></script>
     <script src="./src/puzzle.js"></script>
+    <script src="./src/enemy.js"></script>
+    <script src="./src/util.js"></script>
 
     <!-- Game levels -->
     <script src="./src/levels/level1.js"></script>
 
-    <!-- End screen -->
+    <!-- End screen scene -->
     <script>
     // To display a game over / game won popup box,
     // create a endGame scene that takes in a `label` option
@@ -111,21 +70,21 @@
     });
     </script>
 
-    <!-- Load all assets and stage first scene. -->
+    <!-- Load all assets and stage first scene. Begin game here. -->
     <script>
       // Q.load can be called at any time to load additional assets
       // assets that are already loaded will be skipped
       window.Q.load("sprites.png, sprites.json, level.json, tiles.png, enemies.json",
       // The callback will be triggered when everything is loaded
       function() {
-       // Sprites sheets can be created manually
-       window.Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
+        // Sprites sheets can be created manually
+        window.Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
 
-       // Or from a .json asset that defines sprite locations
-       window.Q.compileSheets("sprites.png","sprites.json");
+        // Or from a .json asset that defines sprite locations
+        window.Q.compileSheets("sprites.png","sprites.json");
 
-       // Finally, call stageScene to run the game
-       window.Q.stageScene("level1");
+        // Finally, call stageScene to run the game
+        window.Q.stageScene("level1");
       })
     </script>
   </body>
