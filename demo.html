@@ -8,6 +8,7 @@
    <body>
      <canvas id='game' width='500' height='500'></canvas>
      <script>
+
       // Full screen hack.
       canvas = document.getElementById("game");
       canvas.width = document.body.clientWidth; //document.width is obsolete
@@ -64,6 +65,23 @@
       });
 
       // Create the Enemy class to add in some baddies
+      Q.Sprite.extend("Barrier",{
+        init: function(p) {
+          this._super(p, { sheet: 'tower'});
+
+          // Listen for a sprite collision, if it's the player,
+          // end the game unless the enemy is hit on top
+          this.on("hit.sprite",function(collision) {
+            if(collision.obj.isA("Player")) {
+              Q.stage().pause()
+              Q.stageScene("textbox", 1, { label: "You Died" });
+              this.destroy();
+            }
+          });
+        }
+      });
+
+      // Create the Enemy class to add in some baddies
       Q.Sprite.extend("Enemy",{
         init: function(p) {
           this._super(p, { sheet: 'enemy', vx: 100 });
@@ -76,7 +94,8 @@
           // end the game unless the enemy is hit on top
           this.on("bump.left,bump.right,bump.bottom",function(collision) {
             if(collision.obj.isA("Player")) {
-              Q.stageScene("endGame",1, { label: "You Died" });
+              Q.stage().pause()
+              Q.stageScene("textbox", 1, { label: "You Died" });
               collision.obj.destroy();
             }
           });
@@ -114,6 +133,25 @@
 
         // Finally add in the tower goal
         stage.insert(new Q.Tower({ x: 180, y: 50 }));
+      });
+
+      // Display a text box over game content.
+      Q.scene("textbox", function(stage) {
+        //stage.pause()
+
+        var container = stage.insert(new Q.UI.Container({
+          x: Q.width/2, y: Q.height/4, fill: "rgba(50,150,200,1.0)", h: 200, w: 500
+        }));
+
+        var button = container.insert(new Q.UI.Button({ x: 180, y: 60, fill: "#CCCCCC",
+        label: "unpause" }))
+        container.insert(new Q.UI.Text({x: -120, y: -80, fill: "#CCCCCC", size: 14, label: "this is text. i like text. it's awesome."}))
+
+        // TODO - Add key press event to kill textbox.
+        button.on("click", function() {
+          Q.clearStage(1)
+          Q.stage().unpause()
+        });
       });
 
       // To display a game over / game won popup box,
