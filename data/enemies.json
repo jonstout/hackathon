@@ -1,5 +1,8 @@
 {
   "enemies" : [
-    ["Enemy", {"x": 508, "y": 670, "asset": "sprites.png"}]
+    ["Enemy", {"x": 700, "y": 0, "sheet": "enemy"}],
+    ["Enemy", {"x": 508, "y": 0, "sheet": "enemy"}],
+    ["Enemy", {"x": 508, "y": 0, "sheet": "enemy"}],
+    ["Enemy", {"x": 508, "y": 0, "sheet": "enemy"}]
   ]
 }

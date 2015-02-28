@@ -3,7 +3,7 @@
     <!-- Pull the engine from the Quintus CDN or load it locally -->
     <!-- (use quintus-all.min.js for production) -->
     <script src='http://cdn.html5quintus.com/v0.2.0/quintus-all.js'></script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   </head>
    <body>
      <canvas id='game' width='500' height='500'></canvas>
@@ -108,15 +108,9 @@
         stage.add("viewport").follow(player);
 
         // Load enemies from file
-        $.getJSON( "enemies.json", function( data ) {
+        $.getJSON( "data/enemies.json", function( data ) {
           stage.loadAssets(data["enemies"]);
         });
-
-        // Add in a couple of enemies
-        for (i=0;i<100;i++) {
-          stage.insert(new Q.Enemy({ x: 700 + i*5, y: 0 }));
-        }
-
 
         // Finally add in the tower goal
         stage.insert(new Q.Tower({ x: 180, y: 50 }));
@@ -147,7 +141,7 @@
 
       // Q.load can be called at any time to load additional assets
       // assets that are already loaded will be skipped
-      Q.load("sprites.png, sprites.json, level.json, tiles.png", "enemies.json",
+      Q.load("sprites.png, sprites.json, level.json, tiles.png, enemies.json",
       // The callback will be triggered when everything is loaded
       function() {
       // Sprites sheets can be created manually
