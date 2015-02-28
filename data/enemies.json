@@ -1,6 +1,7 @@
 {
   "enemies" : [
     ["Enemy", {"x": 700, "y": 0, "sheet": "enemy"}],
-    ["Barrier", {"x": 508, "y": 0, "sheet": "tower"}]
+    ["Barrier", {"x": 508, "y": 0, "sheet": "tower"}],
+    ["Item", {"x": 700, "y": 0, "sheet": "tower", "objName": "dontgivea"}]
   ]
 }
