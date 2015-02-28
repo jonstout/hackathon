@@ -1,4 +1,4 @@
-window.Q.Sprite.extend("Player", {
+Q.Sprite.extend("Player", {
   // the init constructor is called on creation
   init: function(p) {
     // You can call the parent's constructor with this._super(..)
@@ -18,7 +18,7 @@ window.Q.Sprite.extend("Player", {
       // Check the collision, if it's the Tower, you win!
       if(collision.obj.isA("Tower")) {
         // Stage the endGame scene above the current stage
-        window.Q.stageScene("endGame", window.textboxScene, { label: "You Won!" });
+        Q.stageScene("endGame", window.textboxScene, { label: "You Won!" });
         // Remove the player to prevent them from moving
         this.destroy();
       }
