@@ -1,0 +1,5 @@
+{
+  "enemies" : [
+    ["Enemy", {"x": 508, "y": 670, "asset": "sprites.png"}]
+  ]
+}
