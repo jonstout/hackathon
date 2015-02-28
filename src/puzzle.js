@@ -26,7 +26,6 @@ Q.Sprite.extend("Barrier",{
     this.on("hit.sprite",function(collision) {
       if(collision.obj.isA("Player")) {
         Q.stage().pause()
-        console.log(collision.obj.p.keys)
         // Check if Player has the 'dontgivea' key
         var keyIndex = collision.obj.p.keys.indexOf("dontgivea")
         if (keyIndex == -1) {
