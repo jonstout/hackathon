@@ -1,4 +1,12 @@
 # Hackathon
+## Server
+To start the server run
+```
+node index.js
+```
+Navigate to `http://127.0.0.1:8888/demo.html` to view the game demo.
+
+## Administration
 To register click [here](http://goo.gl/forms/VGoa53uRuf)
 
 ## Description
