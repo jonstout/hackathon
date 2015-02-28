@@ -1,0 +1,62 @@
+﻿<html>
+  <head>
+    <!-- Pull the engine from the Quintus CDN or load it locally -->
+    <!-- (use quintus-all.min.js for production) -->
+    <script src='http://cdn.html5quintus.com/v0.2.0/quintus-all.js'></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </head>
+   <body>
+     <canvas id='game' width='500' height='500'></canvas>
+     <script>
+
+         // Full screen hack.
+         canvas = document.getElementById("game");
+         canvas.width = document.body.clientWidth; //document.width is obsolete
+         canvas.height = document.body.clientHeight; //document.height is obsolete
+         canvasW = canvas.width;
+         canvasH = canvas.height;
+
+
+         // Now set up your game (most games will load a separate .js file)
+         var Q = Quintus()                          // Create a new engine instance
+           .include("Sprites, Scenes, Input, 2D, Touch, UI, TMX, Anim") // Load any needed modules
+           .setup("game")                     // Add a canvas element onto the page
+           .controls()                        // Add in default controls (keyboard, buttons)
+           .touch();                          // Add in touch support (for the UI)
+
+         /*
+         ... Actual game code goes here ...
+         */
+         // You can create a sub-class by extending the Q.Sprite class to create Q.Player
+         /*
+         Q.Sprite.extend("Player",{
+
+             // the init constructor is called on creation
+             init: function(p) {
+
+                 properties.sheet = "p1_stand";
+
+                 properties.frame = 1;
+
+                 this.super(properties);
+
+                 this.add("2d");
+                 this.add("platformerControls");
+             }
+         });
+         */
+
+         Q.scene("level1", function (stage) {
+             Q.stageTMX("data/level1.tmx", stage);
+
+             //var player = Q("Player").first();
+         });
+
+         Q.loadTMX("data/level1.tmx", function () {
+             Q.stageScene("level1");
+         });
+         Q.stageScene("level1");
+
+   </script>
+   </body>
+</html>
