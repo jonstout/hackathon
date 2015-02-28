@@ -1,7 +1,8 @@
 {
   "enemies" : [
     ["Enemy", {"x": 700, "y": 0, "sheet": "enemy"}],
-    ["Barrier", {"x": 508, "y": 0, "sheet": "tower"}],
-    ["Item", {"x": 700, "y": 0, "sheet": "tower", "objName": "dontgivea"}]
+    ["Barrier", {"x": 508, "y": 0, "sheet": "tower", "keys": ["dontgivea","keyyy"]}],
+    ["Item", {"x": 700, "y": 0, "sheet": "tower", "objName": "dontgivea"}],
+    ["Item", {"x": 900, "y": 10, "sheet": "tower", "objName": "keyyy"}]
   ]
 }
