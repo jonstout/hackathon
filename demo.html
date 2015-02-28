@@ -74,11 +74,13 @@
     <script>
       // Q.load can be called at any time to load additional assets
       // assets that are already loaded will be skipped
-      window.Q.load("sprites.png, sprites.json, level.json, tiles.png, enemies.json",
+      window.Q.load("sprites.png, sprites.json, level1.tmx, tilemap.png, tiles.png, enemies.json, player1.png",
       // The callback will be triggered when everything is loaded
       function() {
         // Sprites sheets can be created manually
         window.Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
+        window.Q.sheet("tilemap","tilemap.png", { tilew: 70, tileh: 70 });
+        window.Q.sheet("player1","player1.png", { tilew: 47, tileh: 66 });
 
         // Or from a .json asset that defines sprite locations
         window.Q.compileSheets("sprites.png","sprites.json");

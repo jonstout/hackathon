@@ -48,7 +48,7 @@ Q.Sprite.extend("Barrier",{
           for (i = 0; i < keyIndexes.length; i++) {
             collision.obj.p.keys.splice(keyIndexes[i], 1) // Remove key from Player.keys
           }
-            Q.stageScene("textbox", window.textboxScene, { label: "You have found my weakness." }) 
+            Q.stageScene("textbox", window.textboxScene, { label: "You have found my weakness." })
             this.destroy()
         }
       }
