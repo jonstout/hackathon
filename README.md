@@ -6,6 +6,10 @@ node index.js
 ```
 Navigate to `http://127.0.0.1:8888/demo.html` to view the game demo.
 
+## TODO
+1. add item interaction
+2. define locks or dungeon doors (barrier object, with requiredKeys param for enemies.json)
+
 ## Administration
 To register click [here](http://goo.gl/forms/VGoa53uRuf)
 
