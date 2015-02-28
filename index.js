@@ -12,7 +12,7 @@ http.createServer( function(request, response) {
     var pathname = url.parse(request.url).pathname;
     pathname = path.join(process.cwd(),pathname);
 
-    path.exists(pathname, function(exists) {
+    fs.exists(pathname, function(exists) {
 	// If top level route to index.html
 	if (pathname == process.cwd() + "/") {
 	    pathname += 'index.html';

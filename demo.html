@@ -5,12 +5,20 @@
     <script src='http://cdn.html5quintus.com/v0.2.0/quintus-all.js'></script>
   </head>
    <body>
+     <canvas id='game' width='500' height='500'></canvas>
      <script>
+      // Full screen hack.
+      canvas = document.getElementById("game");
+      canvas.width = document.body.clientWidth; //document.width is obsolete
+      canvas.height = document.body.clientHeight; //document.height is obsolete
+      canvasW = canvas.width;
+      canvasH = canvas.height;
+
 
       // Now set up your game (most games will load a separate .js file)
       var Q = Quintus()                          // Create a new engine instance
         .include("Sprites, Scenes, Input, 2D, Touch, UI") // Load any needed modules
-        .setup()                           // Add a canvas element onto the page
+        .setup("game")                     // Add a canvas element onto the page
         .controls()                        // Add in default controls (keyboard, buttons)
         .touch();                          // Add in touch support (for the UI)
 
@@ -86,24 +94,31 @@
       // Create a new scene called level 1
       Q.scene("level1",function(stage) {
 
-      // Add in a tile layer, and make it the collision layer
-      stage.collisionLayer(new Q.TileLayer({
-        dataAsset: 'level.json',
-        sheet:     'tiles' }));
+        // Add in a tile layer, and make it the collision layer
+        stage.collisionLayer(new Q.TileLayer({
+          dataAsset: 'level.json',
+          sheet:     'tiles' }));
 
-      // Create the player and add him to the stage
-      var player = stage.insert(new Q.Player());
+        // Create the player and add him to the stage
+        var player = stage.insert(new Q.Player());
 
-      // Give the stage a moveable viewport and tell it
-      // to follow the player.
-      stage.add("viewport").follow(player);
+        // Give the stage a moveable viewport and tell it
+        // to follow the player.
+        stage.add("viewport").follow(player);
 
-      // Add in a couple of enemies
-      stage.insert(new Q.Enemy({ x: 700, y: 0 }));
-      stage.insert(new Q.Enemy({ x: 800, y: 0 }));
+        // Load enemies from file
+        $.getJSON( "enemies.json", function( data ) {
 
-      // Finally add in the tower goal
-      stage.insert(new Q.Tower({ x: 180, y: 50 }));
+        });
+
+        // Add in a couple of enemies
+        for (i=0;i<100;i++) {
+          stage.insert(new Q.Enemy({ x: 700 + i*5, y: 0 }));
+        }
+
+
+        // Finally add in the tower goal
+        stage.insert(new Q.Tower({ x: 180, y: 50 }));
       });
 
       // To display a game over / game won popup box,
