@@ -19,21 +19,37 @@ Q.Sprite.extend("Item", {
 // Create the Enemy class to add in some baddies
 Q.Sprite.extend("Barrier",{
   init: function(p) {
-    this._super(p, { sheet: 'tower'});
+    this._super(p, { sheet: 'tower', keys: ["a-key"] });
 
     // Listen for a sprite collision, if it's the player,
     // end the game unless the enemy is hit on top
     this.on("hit.sprite",function(collision) {
       if(collision.obj.isA("Player")) {
         Q.stage().pause()
-        // Check if Player has the 'dontgivea' key
-        var keyIndex = collision.obj.p.keys.indexOf("dontgivea")
-        if (keyIndex == -1) {
-          Q.stageScene("textbox", window.textboxScene, { label: "To cross this barrier you must first get an item from somewhere." })
-        } else {
-          collision.obj.p.keys.splice(keyIndex, 1) // Remove key from Player.keys
-          Q.stageScene("textbox", window.textboxScene, { label: "You have found my weakness." })
-          this.destroy()
+        console.log(collision.obj.p.keys)
+        console.log(this.p.keys)
+
+        // Check if Player has all the items needed to pass Barrier
+        hasAll = true
+        keyIndexes = this.p.keys
+
+        for (i = 0; i < keyIndexes.length; i++) {
+          var keyIndex = collision.obj.p.keys.indexOf(keyIndexes[i])
+          if (keyIndex == -1) {
+            Q.stageScene("textbox", window.textboxScene, { label: "You are missing an item you need to cross this barrier." })
+            hasAll = false
+            break
+          } else {
+            keyIndexes[i] = keyIndex
+          }
+        }
+
+        if (hasAll) {
+          for (i = 0; i < keyIndexes.length; i++) {
+            collision.obj.p.keys.splice(keyIndexes[i], 1) // Remove key from Player.keys
+          }
+            Q.stageScene("textbox", window.textboxScene, { label: "You have found my weakness." })
+            this.destroy()
         }
       }
     });
