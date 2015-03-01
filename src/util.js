@@ -6,12 +6,6 @@ Q.Sprite.extend("Tower", {
   }
 });
 
-Q.Sprite.extend("Goal", {
-    init: function (p) {
-        this._super(p, { sheet: "lockblue" });
-    }
-});
-
 // Display a text box over game content.
 Q.scene("textbox", function(stage) {
 
