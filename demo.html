@@ -45,7 +45,7 @@
     <script src="./src/vertEnemy.js"></script>
 
     <!-- Game levels -->
-    <script src="./src/levels/leveltwo.js"></script>
+    <script src="./src/levels/levelone.js"></script>
 
     <!-- End screen scene -->
     <script>
@@ -63,7 +63,7 @@
       // and restart the game.
       button.on("click",function() {
         Q.clearStages();
-        Q.stageScene('levelthree');
+        Q.stageScene('levelone');
       });
 
       // Expand the container to visibily fit it's contents
@@ -89,7 +89,7 @@
         window.Q.compileSheets("sprites.png","sprites.json");
 
         // Finally, call stageScene to run the game
-        window.Q.stageScene("leveltwo");
+        window.Q.stageScene("levelone");
       })
     </script>
   </body>
