@@ -11,6 +11,7 @@ Q.scene("mainMenu", function(stage) {
   playButton.on("click", function() {
     loadCharacterSelection()
     document.getElementById("selectCharacterModalButton").click()
+    submitUserStory("name", "level2")
   });
 
   createButton.on("click", function() {
