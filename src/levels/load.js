@@ -8,7 +8,6 @@ function loadScene(data) {
   var xcoord, ycoord, count, startx, starty, nextLevel, playerNum;
 
 
-  console.log(levelEnemies)
   // Create a scene for this level
   Q.scene(levelName, function(stage) {
     // Lay down the background
@@ -59,8 +58,8 @@ function loadScene(data) {
         stage.insert(new Q.Hazard({ x: xcoord + (i * 72) , y: ycoord }));
     }
 
-    stage.isnert(new Q.Decal({ x: 200, y: 100 }));
-   
+    stage.insert(new Q.Decal({ x: 200, y: 100 }));
+
   });
 
   Q.scene('endGame', function (stage) {
@@ -115,25 +114,23 @@ function loadScene(data) {
 
   Q.stageScene(levelName);
   Q.stageScene("gameInv", 2);
-  //document.getElementById("game").focus()
 }
 
 function loadCharacterSelection() {
   // Load objects for this level from file
-  $.getJSON( "./data/objects.json", function(data) {
-    $.each(data, function(key, value) {
-      var x = document.getElementById("characterSelect")
-      var option = document.createElement("option")
-      option.text = key
-      x.add(option)
+    $.getJSON('http://127.0.0.1:8888/data/objects.json', function (data) {
+      $.each(data, function(key, value) {
+        var x = document.getElementById("characterSelect")
+        var option = document.createElement("option")
+        option.text = key
+        x.add(option)
+      });
+      userStories = data
     });
-  });
 }
 
 function submitCharacterSelection() {
   var x = document.forms["selectCharacterModalForm"]["characterSelect"].value;
-  $.getJSON( "./data/objects.json", function(data) {
-    loadScene(data[x])
-    document.getElementById("game").focus()
-  });
+  loadScene(userStories[x])
+  document.getElementById("game").focus()
 }

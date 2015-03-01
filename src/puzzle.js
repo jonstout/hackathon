@@ -5,12 +5,12 @@ Q.Sprite.extend("Item", {
     this._super(p, { sheet: "tower", objName: "tower" });
 
     this.on("hit.sprite", function(collision) {
-        if (collision.obj.isA("Player")) {
-            // Put the item in Player.keys.
-            collision.obj.p.keys.push(this.p.objName)
-            Q.stage().pause()
-            Q.stageScene("textbox", window.textboxScene, { label: "You have found an item!" });
-            this.destroy();
+      if (collision.obj.isA("Player")) {
+        // Put the item in Player.keys.
+        collision.obj.p.keys.push(this.p.objName)
+        Q.stage().pause()
+        Q.stageScene("textbox", window.textboxScene, { label: "You have found a " + this.p.objName + "!"});
+        this.destroy()
       }
     });
   }
@@ -26,8 +26,6 @@ Q.Sprite.extend("Barrier",{
     this.on("hit.sprite",function(collision) {
       if(collision.obj.isA("Player")) {
         Q.stage().pause()
-        console.log(collision.obj.p.keys)
-        console.log(this.p.keys)
 
         // Check if Player has all the items needed to pass Barrier
         hasAll = true
@@ -36,7 +34,7 @@ Q.Sprite.extend("Barrier",{
         for (i = 0; i < keyIndexes.length; i++) {
           var keyIndex = collision.obj.p.keys.indexOf(keyIndexes[i])
           if (keyIndex == -1) {
-            Q.stageScene("textbox", window.textboxScene, { label: "You are missing an item you need to cross this barrier." })
+            Q.stageScene("textbox", window.textboxScene, { label: this.p.badmsg})
             hasAll = false
             break
           } else {
@@ -48,7 +46,7 @@ Q.Sprite.extend("Barrier",{
           for (i = 0; i < keyIndexes.length; i++) {
             collision.obj.p.keys.splice(keyIndexes[i], 1) // Remove key from Player.keys
           }
-            Q.stageScene("textbox", window.textboxScene, { label: "You have found my weakness." })
+            Q.stageScene("textbox", window.textboxScene, { label: this.p.okmsg})
             this.destroy()
         }
       }
