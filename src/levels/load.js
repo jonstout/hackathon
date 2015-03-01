@@ -33,7 +33,7 @@ function loadScene(data) {
     // Finally add in the tower goal
     stage.insert(new Q.Tower({ x: 180, y: 50 }));
   });
-  
+
   Q.stageScene(levelName)
 }
 

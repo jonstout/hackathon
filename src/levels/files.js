@@ -1,3 +1,10 @@
+
+function delItemFromList(id) {
+  var element = document.getElementById(id);
+  element.parentNode.removeChild(element);
+
+}
+
 function addBarrierToList() {
   name = document.getElementById("barrierName").value
   x = document.getElementById("barrierX").value
@@ -7,7 +14,14 @@ function addBarrierToList() {
   badmsg = document.getElementById("barrierMsgFail").value
 
   id = addBarrier(name, x, y, keys.split(","), okmsg, badmsg)
-  console.log(id)
+  console.log(name)
+
+  obj = document.getElementById("gameObjects")
+  li = document.createElement("li")
+  li.id = id.toString()
+  li.innerHTML = '<button type="button" class="btn btn-default" onclick="delItemFromList(' + li.id + ')">x</button> - ' + name
+  li.className = "list-group-item"
+  obj.appendChild(li);
 }
 
 // Add a barrier to a user's story
@@ -21,12 +35,19 @@ function addBarrier(name, x, y, keys, okmsg, badmsg) {
 }
 
 function addItemToList() {
-  name = document.getElementById("barrierName").value
-  x = document.getElementById("barrierX").value
-  y = document.getElementById("barrierY").value
+  name = document.getElementById("itemName").value
+  x = document.getElementById("itemX").value
+  y = document.getElementById("itemY").value
 
   id = addItem(name, x, y)
-  console.log(id)
+  console.log(name)
+
+  obj = document.getElementById("gameObjects")
+  li = document.createElement("li")
+  li.id = id.toString()
+  li.innerHTML = '<button type="button" class="btn btn-default" onclick="delItemFromList(' + li.id + ')">x</button> - ' + name
+  li.className = "list-group-item"
+  obj.appendChild(li);
 }
 
 // Add an item to a user's story
