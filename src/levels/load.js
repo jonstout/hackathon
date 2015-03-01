@@ -29,6 +29,7 @@ function loadScene(data) {
   });
 
   Q.stageScene(levelName);
+  //document.getElementById("game").focus()
 }
 
 function loadCharacterSelection() {
@@ -47,5 +48,6 @@ function submitCharacterSelection() {
   var x = document.forms["selectCharacterModalForm"]["characterSelect"].value;
   $.getJSON( "./data/objects.json", function(data) {
     loadScene(data[x])
+    document.getElementById("game").focus()
   });
 }
