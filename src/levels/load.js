@@ -33,13 +33,13 @@ function loadScene(data) {
     // Finally add in the tower goal
     stage.insert(new Q.Tower({ x: 180, y: 50 }));
   });
-  
+
   Q.stageScene(levelName)
 }
 
 function loadCharacterSelection() {
   // Load objects for this level from file
-    $.getJSON('data/objects.json', function (data) {
+    $.getJSON('http://127.0.0.1:8888/data/objects.json', function (data) {
       $.each(data, function(key, value) {
         var x = document.getElementById("characterSelect")
         var option = document.createElement("option")
