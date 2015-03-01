@@ -15,7 +15,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
   </head>
-  <body>
+  <body style="background-color: dodgerblue;">
     <canvas id='game' width='500' height='500'></canvas>
 
     <!-- Global variables and scripts -->
@@ -30,7 +30,7 @@
 
       // Now set up your game (most games will load a separate .js file)
       var Q = Quintus()                          // Create a new engine instance
-      .include("Sprites, Scenes, Input, 2D, Touch, UI") // Load any needed modules
+      .include("Sprites, Anim, Scenes, Input, 2D, Touch, UI") // Load any needed modules
       .setup("game")                     // Add a canvas element onto the page
       .controls()                        // Add in default controls (keyboard, buttons)
       .touch();                          // Add in touch support (for the UI)
@@ -42,9 +42,10 @@
     <script src="./src/puzzle.js"></script>
     <script src="./src/enemy.js"></script>
     <script src="./src/util.js"></script>
+    <script src="./src/vertEnemy.js"></script>
 
     <!-- Game levels -->
-    <script src="./src/levels/level1.js"></script>
+    <script src="./src/levels/leveltwo.js"></script>
 
     <!-- End screen scene -->
     <script>
@@ -62,7 +63,7 @@
       // and restart the game.
       button.on("click",function() {
         Q.clearStages();
-        Q.stageScene('level1');
+        Q.stageScene('levelthree');
       });
 
       // Expand the container to visibily fit it's contents
@@ -74,19 +75,21 @@
     <script>
       // Q.load can be called at any time to load additional assets
       // assets that are already loaded will be skipped
-      window.Q.load("sprites.png, sprites.json, level1.tmx, tilemap.png, tiles.png, enemies.json, player1.png",
+      window.Q.load("sprites.png, sprites.json, levelone.tmx, tilemap.png, tiles_spritesheet.png, keyRed.png, tiles.png, enemies.json, enemies2.json, enemies3.json, player1.png, leveltwo.tmx, levelthree.tmx",
       // The callback will be triggered when everything is loaded
       function() {
         // Sprites sheets can be created manually
         window.Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
-        window.Q.sheet("tilemap","tilemap.png", { tilew: 70, tileh: 70 });
+        window.Q.sheet("tilemap", "tilemap.png", { tilew: 70, tileh: 70 });
+        window.Q.sheet("spritesheet", "tiles_spritesheet.png", { tilew: 72, tileh: 72 });
+        window.Q.sheet("key", "keyRed.png", { tilew: 70, tileh: 70 });
         window.Q.sheet("player1","player1.png", { tilew: 47, tileh: 66 });
 
         // Or from a .json asset that defines sprite locations
         window.Q.compileSheets("sprites.png","sprites.json");
 
         // Finally, call stageScene to run the game
-        window.Q.stageScene("level1");
+        window.Q.stageScene("leveltwo");
       })
     </script>
   </body>

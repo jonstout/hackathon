@@ -1,7 +1,11 @@
 {
   "enemies" : [
     ["Enemy", {"x": 1200, "y": 300, "sheet": "enemy"}],
+	["Enemy", {"x": 1300, "y": 300, "sheet": "enemy"}],
+	["Enemy", {"x": 1600, "y": 100, "sheet": "enemy"}],
+	["Enemy", {"x": 1900, "y": 100, "sheet": "enemy"}],
 	["verticalEnemy", {"x": 820, "y": 510, "rangeY": 170, "sheet": "enemy"}],
+	["verticalEnemy", {"x": 575, "y": 780, "rangeY": 70, "sheet": "enemy"}],
     ["Barrier", {"x": 508, "y": 0, "sheet": "tower", "keys": ["dontgivea","keyyy"]}],
     ["Item", {"x": 700, "y": 0, "sheet": "tower", "objName": "dontgivea"}],
     ["Item", {"x": 900, "y": 10, "sheet": "tower", "objName": "keyyy"}]

@@ -1,0 +1,22 @@
+{
+  "enemies" : [
+    ["Enemy", {"x": 550, "y": 3400, "sheet": "enemy"}],
+	["Enemy", {"x": 750, "y": 3150, "sheet": "enemy"}],
+	["Enemy", {"x": 450, "y": 2250, "sheet": "enemy"}],
+	["Enemy", {"x": 750, "y": 2250, "sheet": "enemy"}],
+	["Enemy", {"x": 950, "y": 1850, "sheet": "enemy"}],
+	["Enemy", {"x": 600, "y": 1330, "sheet": "enemy"}],
+
+	["Enemy", {"x": 550, "y": 850, "sheet": "enemy"}],
+	["Enemy", {"x": 650, "y": 850, "sheet": "enemy"}],
+	["Enemy", {"x": 750, "y": 850, "sheet": "enemy"}],
+	["Enemy", {"x": 850, "y": 850, "sheet": "enemy"}],
+	["Enemy", {"x": 950, "y": 850, "sheet": "enemy"}],
+	
+	["verticalEnemy", {"x": 340, "y": 830, "rangeY": 110,  "sheet": "enemy"}],
+	["verticalEnemy", {"x": 645, "y": 740, "rangeY": 230,  "sheet": "enemy"}],
+
+	["verticalEnemy", {"x": 540, "y": 2700, "rangeY": 130,  "sheet": "enemy"}],
+	["verticalEnemy", {"x": 780, "y": 1530, "rangeY": 100,  "sheet": "enemy"}]
+  ]
+}
