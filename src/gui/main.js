@@ -14,7 +14,8 @@ Q.scene("mainMenu", function(stage) {
   });
 
   createButton.on("click", function() {
-    Q.clearStage(window.mainMenuScene)
-    Q.stageScene("level1");
+    // Q.clearStage(window.mainMenuScene)
+    // Q.stageScene("createMenu")
+    document.getElementsByTagName('button')[0].click();
   });
 });
