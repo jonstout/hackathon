@@ -18,7 +18,13 @@ function loadScene(data) {
     stage.collisionLayer(new Q.TileLayer({ dataAsset: levelTMX, layerIndex: 0, sheet: 'tilemap', tileW: 72, tileH: 72 }));
 
     // Create the player and add him to the stage
-    var player = stage.insert(new Q.Player());
+    if (stage._collisionLayer.p.dataAsset == "level1.tmx") {
+      var player = stage.insert(new Q.Player({x: 250, y: 90}));
+    } else if (stage._collisionLayer.p.dataAsset == "level2.tmx") {
+      var player = stage.insert(new Q.Player({x: 2250, y: 160}));
+    } else {
+      var player = stage.insert(new Q.Player({x: 600, y: 120}));
+    }
 
     // Give the stage a moveable viewport and tell it
     // to follow the player.
@@ -29,13 +35,10 @@ function loadScene(data) {
     $.getJSON( "./data/enemies.json", function(data) {
       stage.loadAssets(data[levelName])
     });
-
-    // Finally add in the tower goal
-      //stage.insert(new Q.Tower({ x: 180, y: 50 }));
-    //stage.insert(new Q.Goal({ x: 180, y: 50 }));
   });
 
   Q.stageScene(levelName)
+  document.getElementById("game").focus()
 }
 
 function loadCharacterSelection() {
