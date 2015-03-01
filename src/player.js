@@ -4,7 +4,7 @@ Q.Sprite.extend("Player", {
     // You can call the parent's constructor with this._super(..)
     this._super(p, {
       sheet: "player1",  // Setting a sprite sheet sets sprite width and height
-      x: 410,           // You can also set additional properties that can
+      x: 2250,           // You can also set additional properties that can
       y: 90,            // be overridden on object creation
       keys: [],          // Think of these like dungeon keys from zelda
       jumpSpeed: -400
@@ -17,7 +17,7 @@ Q.Sprite.extend("Player", {
     // hit.sprite is called everytime the player collides with a sprite
     this.on("hit.sprite",function(collision) {
       // Check the collision, if it's the Tower, you win!
-      if(collision.obj.isA("Tower")) {
+      if(collision.obj.isA("Goal")) {
         // Stage the endGame scene above the current stage
         Q.stageScene("endGame", window.textboxScene, { label: "You Won!" });
         // Remove the player to prevent them from moving

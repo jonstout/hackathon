@@ -85,7 +85,7 @@
     <script>
       // Q.load can be called at any time to load additional assets
       // assets that are already loaded will be skipped
-      window.Q.load("sprites.png, sprites.json, level1.tmx, level2.tmx, level3.tmx, tilemap.png, tiles.png, objects.json, player1.png, keyRed.png, keyBlue.png, lock_red.png, lock_blue.png",
+      window.Q.load("sprites.png, sprites.json, level1.tmx, level2.tmx, level3.tmx, tilemap.png, tiles.png, objects.json, player1.png, keyRed.png, keyBlue.png, lock_red.png, lock_blue.png, door_openMid.png",
       // The callback will be triggered when everything is loaded
       function() {
         // Sprites sheets can be created manually
@@ -96,6 +96,7 @@
         Q.sheet("lockred", "lock_red.png", { tilew: 70, tileh: 70 });
         Q.sheet("keyBlue", "keyBlue.png", { tilew: 70, tileh: 70 });
         Q.sheet("lockblue", "lock_blue.png", { tilew: 70, tileh: 70 });
+        Q.sheet("opendoor", "door_openMid.png", { tilew: 70, tileh: 70 });
 
         // Or from a .json asset that defines sprite locations
         Q.compileSheets("sprites.png","sprites.json");

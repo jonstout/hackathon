@@ -20,5 +20,5 @@ Q.scene("level2",function(stage) {
   });
     
   // Finally add in the tower goal
-  stage.insert(new Q.Tower({ x: 180, y: 50 }));
+ // stage.insert(new Q.Tower({ x: 180, y: 50 }));
 });

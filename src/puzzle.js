@@ -55,3 +55,10 @@ Q.Sprite.extend("Barrier",{
     });
   }
 });
+
+Q.Sprite.extend("Goal", {
+    init: function(p) {
+        this._super(p, { sheet: "opendoor" });
+
+    }
+});
