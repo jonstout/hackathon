@@ -36,8 +36,7 @@ function loadScene(data) {
 
 
 
-  Q.stageScene(levelName);
-  //document.getElementById("game").focus()
+  Q.stageScene(levelName)
 }
 
 function loadCharacterSelection() {

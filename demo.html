@@ -145,20 +145,69 @@
             <!-- createStory -->
             <form>
               <div class="form-group">
-                <label for="exampleInputEmail1">Character name</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                <label for="characterName">Character name</label>
+                <input type="text" class="form-control" id="characterName" placeholder="Alice">
               </div>
-              <select class="form-control">
-                <option>Level 1</option>
-                <option>Level 2</option>
-                <option>Level 3</option>
-              </select>
+              <div class="form-group">
+                <label for="levelSelect">Level</label>
+                <select class="form-control" id="levelSelect"></select>
+              </div>
+              <hr/>
+
+              <h4>New game item</h4>
+              <div class="form-group">
+                <label for="itemName">Item name</label>
+                <input type="text" class="form-control" id="itemName" placeholder="Name"/>
+              </div>
+              <div class="form-group">
+                <label for="itemX">X Pos.</label>
+                <input type="text" class="form-control" id="itemX" placeholder="x"/>
+              </div>
+              <div class="form-group">
+                <label for="itemY">Y Pos.</label>
+                <input type="text" class="form-control" id="itemY" placeholder="y"/>
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-default" id="itemSubmit">+</button>
+              </div>
+              <hr/>
+
+              <h4>New game barrier</h4>
+              <div class="form-group">
+                <label for="barrierName">Barrier name</label>
+                <input type="text" class="form-control" id="barrierName" placeholder="Name"/>
+              </div>
+              <div class="form-group">
+                <label for="barrierX">X Pos.</label>
+                <input type="text" class="form-control" id="barrierX" placeholder="x"/>
+              </div>
+              <div class="form-group">
+                <label for="barrierY">Y Pos.</label>
+                <input type="text" class="form-control" id="barrierY" placeholder="y"/>
+              </div>
+              <div class="form-group">
+                <label for="barrierY">Name required items</label>
+                <input type="text" class="form-control" id="barrierItems" placeholder="xbox,halo"/>
+              </div>
+              <div class="form-group">
+                <label for="barrierY">OK message</label>
+                <input type="text" class="form-control" id="barrierMsgOk" placeholder="Good job."/>
+              </div>
+              <div class="form-group">
+                <label for="barrierY">Failure message</label>
+                <input type="text" class="form-control" id="barrierMsgFail" placeholder="You're not done yet!"/>
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-default" id="barrierSubmit">+</button>
+              </div>
+              <hr/>
+
+              <div class="form-group">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="submitCharacterSelection()">Select character</button>
+              </div>
             </form>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
         </div>
       </div>
     </div>
