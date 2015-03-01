@@ -1,8 +1,9 @@
-﻿<html>
+<!DOCTYPE html>﻿
+<html>
   <head>
     <!-- Pull the engine from the Quintus CDN or load it locally -->
     <!-- (use quintus-all.min.js for production) -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -41,6 +42,10 @@
       .controls()                        // Add in default controls (keyboard, buttons)
       .touch();                          // Add in touch support (for the UI)
       var textboxScene = 1
+
+      var userStories = []
+      var tempGameObjects = []
+
     </script>
 
     <!-- Game objects -->
@@ -55,6 +60,7 @@
 
     <!-- Game levels -->
     <script src="./src/levels/load.js"></script>
+    <script src="./src/levels/files.js"></script>
     <script src="./src/levels/level1.js"></script>
 
     <!-- End screen scene -->
@@ -68,7 +74,7 @@
       }));
 
       var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC", label: "Play Again" }))
-      var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, label: stage.options.label }));
+      var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, label: stage.options.label }))
       // When the button is clicked, clear all the stages
       // and restart the game.
       button.on("click",function() {
@@ -89,6 +95,7 @@
       // The callback will be triggered when everything is loaded
       function() {
         // Sprites sheets can be created manually
+
         Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
         Q.sheet("tilemap","tilemap.png", { tilew: 72, tileh: 72 });
         Q.sheet("player1", "player1.png", { tilew: 47, tileh: 66 });
@@ -99,7 +106,7 @@
         Q.sheet("opendoor", "door_openMid.png", { tilew: 70, tileh: 70 });
 
         // Or from a .json asset that defines sprite locations
-        Q.compileSheets("sprites.png","sprites.json");
+        Q.compileSheets("sprites.png","sprites.json")
 
         // Finally, call stageScene to run the game
         Q.stageScene("mainMenu");
@@ -115,7 +122,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="selectCharacterModalLabel">Create a new story</h4>
+            <h4 class="modal-title" id="selectCharacterModalLabel">Choose your character</h4>
           </div>
           <div class="modal-body">
             <!-- characterSelect -->
@@ -150,20 +157,76 @@
             <!-- createStory -->
             <form>
               <div class="form-group">
-                <label for="exampleInputEmail1">Character name</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                <label for="characterName">Character name</label>
+                <input type="text" class="form-control" id="characterName" placeholder="Alice">
               </div>
-              <select class="form-control">
-                <option>Level 1</option>
-                <option>Level 2</option>
-                <option>Level 3</option>
-              </select>
+              <div class="form-group">
+                <label for="levelSelect">Level</label>
+                <select class="form-control" id="levelSelect">
+                  <option value="level1">Level 1</option>
+                  <option value="level2">Level 2</option>
+                  <option value="level3">Level 3</option>
+                </select>
+              </div>
+              <hr/>
+
+              <h4>New game item</h4>
+              <div class="form-group">
+                <label for="itemName">Item name</label>
+                <input type="text" class="form-control" id="itemName" placeholder="Name"/>
+              </div>
+              <div class="form-group">
+                <label for="itemX">X Pos.</label>
+                <input type="text" class="form-control" id="itemX" placeholder="x"/>
+              </div>
+              <div class="form-group">
+                <label for="itemY">Y Pos.</label>
+                <input type="text" class="form-control" id="itemY" placeholder="y"/>
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-default" id="itemSubmit" onclick="addItemToList()">+</button>
+              </div>
+              <hr/>
+
+              <h4>New game barrier</h4>
+              <div class="form-group">
+                <label for="barrierName">Barrier name</label>
+                <input type="text" class="form-control" id="barrierName" placeholder="Name"/>
+              </div>
+              <div class="form-group">
+                <label for="barrierX">X Pos.</label>
+                <input type="text" class="form-control" id="barrierX" placeholder="x"/>
+              </div>
+              <div class="form-group">
+                <label for="barrierY">Y Pos.</label>
+                <input type="text" class="form-control" id="barrierY" placeholder="y"/>
+              </div>
+              <div class="form-group">
+                <label for="barrierY">Name required items</label>
+                <input type="text" class="form-control" id="barrierItems" placeholder="xbox,halo"/>
+              </div>
+              <div class="form-group">
+                <label for="barrierY">OK message</label>
+                <input type="text" class="form-control" id="barrierMsgOk" placeholder="Good job."/>
+              </div>
+              <div class="form-group">
+                <label for="barrierY">Failure message</label>
+                <input type="text" class="form-control" id="barrierMsgFail" placeholder="You're not done yet!"/>
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-default" id="barrierSubmit" onclick="addBarrierToList()">+</button>
+              </div>
+              <hr/>
+
+              <h4>Game objects</h4>
+              <ul class="list-group" id="gameObjects"></ul>
+
+              <div class="form-group">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="submitUserStory()">Select character</button>
+              </div>
             </form>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
         </div>
       </div>
     </div>

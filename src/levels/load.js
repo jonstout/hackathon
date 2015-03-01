@@ -35,28 +35,24 @@ function loadScene(data) {
     //stage.insert(new Q.Goal({ x: 180, y: 50 }));
   });
 
-
-
-  Q.stageScene(levelName);
-  //document.getElementById("game").focus()
+  Q.stageScene(levelName)
 }
 
 function loadCharacterSelection() {
   // Load objects for this level from file
-  $.getJSON( "./data/objects.json", function(data) {
-    $.each(data, function(key, value) {
-      var x = document.getElementById("characterSelect")
-      var option = document.createElement("option")
-      option.text = key
-      x.add(option)
+    $.getJSON('http://127.0.0.1:8888/data/objects.json', function (data) {
+      $.each(data, function(key, value) {
+        var x = document.getElementById("characterSelect")
+        var option = document.createElement("option")
+        option.text = key
+        x.add(option)
+      });
+      userStories = data
     });
-  });
 }
 
 function submitCharacterSelection() {
   var x = document.forms["selectCharacterModalForm"]["characterSelect"].value;
-  $.getJSON( "./data/objects.json", function(data) {
-    loadScene(data[x])
-    document.getElementById("game").focus()
-  });
+  loadScene(userStories[x])
+  document.getElementById("game").focus()
 }
