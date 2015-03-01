@@ -2,17 +2,13 @@
   "Carter" : {
     "level" : "level1",
     "objs" : [
-      ["Enemy", {"x": 700, "y": 0, "sheet": "enemy"}],
-      ["Barrier", {"x": 508, "y": 0, "sheet": "tower", "keys": ["dontgivea","keyyy"], "okmsg" : "You have found my weakness!", "badmsg" : "You are missing an item you need to cross this barrier."}],
-      ["Item", {"x": 700, "y": 0, "sheet": "tower", "objName": "dontgivea"}],
-      ["Item", {"x": 900, "y": 10, "sheet": "tower", "objName": "keyyy"}]
+      ["Barrier", {"x": 1547, "y": 468, "sheet": "lockred", "keys": ["dontgivea"], "okmsg" : "You have found my weakness!", "badmsg" : "You are missing an item you need to cross this barrier."}],
+      ["Item", {"x": 320, "y": 260, "sheet": "keyRed", "objName": "dontgivea"}]
     ]},
   "Jon" : {
     "level" : "level2",
     "objs" : [
-      ["Enemy", {"x": 600, "y": 0, "sheet": "enemy"}],
-      ["Barrier", {"x": 500, "y": 0, "sheet": "tower", "keys": ["dontgivea","keyyy"], "okmsg" : "You have found my weakness!", "badmsg" : "You are missing an item you need to cross this barrier."}],
-      ["Item", {"x": 600, "y": 30, "sheet": "tower", "objName": "dontgivea"}],
-      ["Item", {"x": 800, "y": 40, "sheet": "tower", "objName": "keyyy"}]
+      ["Barrier", {"x": 2340, "y": 108, "sheet": "lockblue", "keys": ["keyyy"], "okmsg" : "You have found my weakness!", "badmsg" : "You are missing an item you need to cross this barrier."}],
+      ["Item", {"x": 250, "y": 690, "sheet": "keyBlue", "objName": "keyyy"}]
     ]}
 }
