@@ -4,7 +4,7 @@ Q.Sprite.extend("Player", {
     // You can call the parent's constructor with this._super(..)
     this._super(p, {
       sheet: "player1",  // Setting a sprite sheet sets sprite width and height
-      x: 2250,           // You can also set additional properties that can
+      x: 250,           // You can also set additional properties that can
       y: 90,            // be overridden on object creation
       keys: [],          // Think of these like dungeon keys from zelda
       jumpSpeed: -400
