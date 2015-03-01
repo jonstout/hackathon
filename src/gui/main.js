@@ -9,13 +9,11 @@ Q.scene("mainMenu", function(stage) {
   var createButton = container.insert(new Q.UI.Button({ x: 0, y: 30, fill: "#CCCCCC", label: "Create" }))
 
   playButton.on("click", function() {
-    Q.clearStage(window.mainMenuScene)
-    Q.stageScene("level1");
+    loadCharacterSelection()
+    document.getElementById("selectCharacterModalButton").click()
   });
 
   createButton.on("click", function() {
-    // Q.clearStage(window.mainMenuScene)
-    // Q.stageScene("createMenu")
-    document.getElementsByTagName('button')[0].click();
+    document.getElementById("createStoryModalButton").click()
   });
 });
