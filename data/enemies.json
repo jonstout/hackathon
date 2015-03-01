@@ -1,0 +1,34 @@
+{
+  "level1" : [
+		["Enemy", {"x": 1300, "y": 300, "sheet": "enemy"}],
+		["Enemy", {"x": 800, "y": 200, "sheet": "enemy"}]
+    ],
+  "level2" : [
+		["Enemy", {"x": 1200, "y": 300, "sheet": "enemy"}],
+		["Enemy", {"x": 1300, "y": 300, "sheet": "enemy"}],
+		["Enemy", {"x": 1600, "y": 100, "sheet": "enemy"}],
+		["Enemy", {"x": 1900, "y": 100, "sheet": "enemy"}],
+		["verticalEnemy", {"x": 820, "y": 510, "rangeY": 170, "sheet": "enemy"}],
+		["verticalEnemy", {"x": 575, "y": 780, "rangeY": 70, "sheet": "enemy"}]
+    ],
+  "level3" : [
+		["Enemy", {"x": 550, "y": 3400, "sheet": "enemy"}],
+		["Enemy", {"x": 750, "y": 3150, "sheet": "enemy"}],
+		["Enemy", {"x": 450, "y": 2250, "sheet": "enemy"}],
+		["Enemy", {"x": 750, "y": 2250, "sheet": "enemy"}],
+		["Enemy", {"x": 950, "y": 1850, "sheet": "enemy"}],
+		["Enemy", {"x": 600, "y": 1330, "sheet": "enemy"}],
+
+		["Enemy", {"x": 550, "y": 850, "sheet": "enemy"}],
+		["Enemy", {"x": 650, "y": 850, "sheet": "enemy"}],
+		["Enemy", {"x": 750, "y": 850, "sheet": "enemy"}],
+		["Enemy", {"x": 850, "y": 850, "sheet": "enemy"}],
+		["Enemy", {"x": 950, "y": 850, "sheet": "enemy"}],
+	
+		["verticalEnemy", {"x": 340, "y": 830, "rangeY": 110,  "sheet": "enemy"}],
+		["verticalEnemy", {"x": 645, "y": 740, "rangeY": 230,  "sheet": "enemy"}],
+
+		["verticalEnemy", {"x": 540, "y": 2700, "rangeY": 130,  "sheet": "enemy"}],
+		["verticalEnemy", {"x": 780, "y": 1530, "rangeY": 100,  "sheet": "enemy"}]
+    ]
+}
