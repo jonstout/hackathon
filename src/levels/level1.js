@@ -18,7 +18,8 @@ Q.scene("level1",function(stage) {
   $.getJSON( "data/objects.json", function( data ) {
     stage.loadAssets(data["level1"]);
   });
-
+    
+   
   // Finally add in the tower goal
-  stage.insert(new Q.Tower({ x: 180, y: 50 }));
+  //stage.insert(new Q.Tower({ x: 120, y: 80 }));
 });
