@@ -44,6 +44,7 @@
     <script src="./src/util.js"></script>
 
     <!-- Game levels -->
+    <script src="./src/gui/main.js"></script>
     <script src="./src/levels/level1.js"></script>
 
     <!-- End screen scene -->
@@ -78,15 +79,15 @@
       // The callback will be triggered when everything is loaded
       function() {
         // Sprites sheets can be created manually
-        window.Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
-        window.Q.sheet("tilemap","tilemap.png", { tilew: 70, tileh: 70 });
-        window.Q.sheet("player1","player1.png", { tilew: 47, tileh: 66 });
+        Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
+        Q.sheet("tilemap","tilemap.png", { tilew: 70, tileh: 70 });
+        Q.sheet("player1","player1.png", { tilew: 47, tileh: 66 });
 
         // Or from a .json asset that defines sprite locations
-        window.Q.compileSheets("sprites.png","sprites.json");
+        Q.compileSheets("sprites.png","sprites.json");
 
         // Finally, call stageScene to run the game
-        window.Q.stageScene("level1");
+        Q.stageScene("mainMenu");
       })
     </script>
   </body>
