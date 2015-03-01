@@ -1,11 +1,32 @@
+function addBarrierToList() {
+  name = document.getElementById("barrierName").value
+  x = document.getElementById("barrierX").value
+  y = document.getElementById("barrierY").value
+  keys = document.getElementById("barrierItems").value
+  okmsg = document.getElementById("barrierMsgOk").value
+  badmsg = document.getElementById("barrierMsgFail").value
+
+  id = addBarrier(name, x, y, keys.split(","), okmsg, badmsg)
+  console.log(id)
+}
+
 // Add a barrier to a user's story
 // "Barrier", {"x": 508, "y": 0, "sheet": "tower", "keys": ["dontgivea","keyyy"], "okmsg" : "You have found my weakness!", "badmsg" : "You are missing an item you need to cross this barrier."}],
 function addBarrier(name, x, y, keys, okmsg, badmsg) {
-    var newBarrier = ["Barrier", {"x": x, "y": y, "sheet": "tower", "keys" = keys, "okmsg": okmsg, "badmsg": badmsg}]
+    var newBarrier = ["Barrier", {"x": x, "y": y, "sheet": "tower", "keys": keys, "okmsg": okmsg, "badmsg": badmsg}]
     tempGameObjects.length += 1
     index = (tempGameObjects.length - 1)
     tempGameObjects[index] = newBarrier
     return index
+}
+
+function addItemToList() {
+  name = document.getElementById("barrierName").value
+  x = document.getElementById("barrierX").value
+  y = document.getElementById("barrierY").value
+
+  id = addItem(name, x, y)
+  console.log(id)
 }
 
 // Add an item to a user's story
@@ -18,16 +39,16 @@ function addItem(name, x, y) {
     return index
 }
 
-// Submit all barriers and items from a user's story (as stored in tempGameObjects) to a new 
+// Submit all barriers and items from a user's story (as stored in tempGameObjects) to a new
 // objects.json entry that can be staged as its own level
 // Reset tempGameObjects
 function submitUserStory(name, lvl) {
-    
+
 
 }
 
 // Delete the barrier or item at index i in tempGameObjects
 function deleteFromUserStory(i) {
-    
+
 
 }

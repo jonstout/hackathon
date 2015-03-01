@@ -60,6 +60,7 @@
 
     <!-- Game levels -->
     <script src="./src/levels/load.js"></script>
+    <script src="./src/levels/files.js"></script>
     <script src="./src/levels/level1.js"></script>
 
     <!-- End screen scene -->
@@ -159,9 +160,13 @@
               </div>
               <div class="form-group">
                 <label for="levelSelect">Level</label>
-                <select class="form-control" id="levelSelect"></select>
+                <select class="form-control" id="levelSelect">
+                  <option value="level1">Level 1</option>
+                  <option value="level1">Level 2</option>
+                  <option value="level1">Level 3</option>
+                </select>
               </div>
-
+              <hr/>
 
               <h4>New game item</h4>
               <div class="form-group">
@@ -177,9 +182,9 @@
                 <input type="text" class="form-control" id="itemY" placeholder="y"/>
               </div>
               <div class="form-group">
-                <button type="button" class="btn btn-default" id="itemSubmit">+</button>
+                <button type="button" class="btn btn-default" id="itemSubmit" onclick="addItemToList()">+</button>
               </div>
-
+              <hr/>
 
               <h4>New game barrier</h4>
               <div class="form-group">
@@ -207,9 +212,9 @@
                 <input type="text" class="form-control" id="barrierMsgFail" placeholder="You're not done yet!"/>
               </div>
               <div class="form-group">
-                <button type="button" class="btn btn-default" id="barrierSubmit">+</button>
+                <button type="button" class="btn btn-default" id="barrierSubmit" onclick="addBarrierToList()">+</button>
               </div>
-
+              <hr/>
 
               <div class="form-group">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
