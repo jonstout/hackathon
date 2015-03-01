@@ -24,7 +24,7 @@
 		["Enemy", {"x": 750, "y": 850, "sheet": "enemy"}],
 		["Enemy", {"x": 850, "y": 850, "sheet": "enemy"}],
 		["Enemy", {"x": 950, "y": 850, "sheet": "enemy"}],
-	
+
 		["verticalEnemy", {"x": 340, "y": 830, "rangeY": 110,  "sheet": "enemy"}],
 		["verticalEnemy", {"x": 645, "y": 740, "rangeY": 230,  "sheet": "enemy"}],
 
