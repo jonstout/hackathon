@@ -4,13 +4,23 @@
     "objs" : [
       ["Barrier", {"x": 1547, "y": 468, "sheet": "lockred", "keys": ["dontgivea"]}],
 	  ["Goal", {"x": 1763, "y": 538, "sheet": "opendoor"}],
-      ["Item", {"x": 320, "y": 260, "sheet": "keyRed", "objName": "dontgivea"}]
+      ["Item", {"x": 320, "y": 260, "sheet": "keyRed", "objName": "dontgivea"}],
+	  ["Decal", {"x": 470, "y": 541, "sheet": "signright"}]
     ]},
   "Jon" : {
     "level" : "level2",
     "objs" : [
       ["Barrier", {"x": 2340, "y": 108, "sheet": "lockblue", "keys": ["keyyy"]}],
 	  ["Goal", {"x": 2555, "y": 180, "sheet": "opendoor"}],
-      ["Item", {"x": 250, "y": 690, "sheet": "keyBlue", "objName": "keyyy"}]
+	  ["Hazard", {"x": 35, "y": 900, "sheet": "water"}],
+      ["Hazard", {"x": 395, "y": 900, "sheet": "water"}],
+	  ["Hazard", {"x": 467, "y": 900, "sheet": "water"}],
+	  ["Hazard", {"x": 539, "y": 900, "sheet": "water"}],
+	  ["Hazard", {"x": 611, "y": 900, "sheet": "water"}],
+	  ["Hazard", {"x": 683, "y": 900, "sheet": "water"}],
+	  ["Hazard", {"x": 755, "y": 900, "sheet": "water"}],
+	  ["Hazard", {"x": 1547, "y": 900, "sheet": "water"}],
+      ["Item", {"x": 250, "y": 690, "sheet": "keyBlue", "objName": "keyyy"}],
+	  ["Decal", {"x": 380, "y": 253, "sheet": "signright"}]
     ]}
 }

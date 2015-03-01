@@ -1,15 +1,16 @@
 {
   "level1" : [
-		["Enemy", {"x": 1300, "y": 300, "sheet": "enemy"}],
-		["Enemy", {"x": 800, "y": 200, "sheet": "enemy"}]
+		["Enemy", {"x": 1300, "y": 300, "sheet": "snail"}],
+		["Enemy", {"x": 800, "y": 200, "sheet": "enemy"}],
+		["VerticalEnemy", {"x": 375, "y": 200, "rangeY": 70, "sheet": "fly"}]
     ],
   "level2" : [
-		["Enemy", {"x": 1200, "y": 300, "sheet": "enemy"}],
+		["Enemy", {"x": 1200, "y": 300, "sheet": "snail"}],
 		["Enemy", {"x": 1300, "y": 300, "sheet": "enemy"}],
 		["Enemy", {"x": 1600, "y": 100, "sheet": "enemy"}],
-		["Enemy", {"x": 1900, "y": 100, "sheet": "enemy"}],
-		["VerticalEnemy", {"x": 820, "y": 510, "rangeY": 170, "sheet": "enemy"}],
-		["VerticalEnemy", {"x": 575, "y": 780, "rangeY": 70, "sheet": "enemy"}]
+		["Enemy", {"x": 1900, "y": 100, "sheet": "slime"}],
+		["VerticalEnemy", {"x": 820, "y": 510, "rangeY": 170, "sheet": "fly"}],
+		["VerticalEnemy", {"x": 575, "y": 780, "rangeY": 70, "sheet": "fly"}]
     ],
   "level3" : [
 		["Enemy", {"x": 550, "y": 3400, "sheet": "enemy"}],

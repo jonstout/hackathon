@@ -5,12 +5,12 @@ Q.Sprite.extend("Item", {
     this._super(p, { sheet: "tower", objName: "tower" });
 
     this.on("hit.sprite", function(collision) {
-      if (collision.obj.isA("Player")) {
-        // Put the item in Player.keys.
-        collision.obj.p.keys.push(this.p.objName)
-        Q.stage().pause()
-        Q.stageScene("textbox", window.textboxScene, { label: "You have found an item!" });
-        this.destroy()
+        if (collision.obj.isA("Player")) {
+            // Put the item in Player.keys.
+            collision.obj.p.keys.push(this.p.objName)
+            Q.stage().pause()
+            Q.stageScene("textbox", window.textboxScene, { label: "You have found an item!" });
+            this.destroy();
       }
     });
   }
@@ -59,6 +59,20 @@ Q.Sprite.extend("Barrier",{
 Q.Sprite.extend("Goal", {
     init: function(p) {
         this._super(p, { sheet: "opendoor" });
+
+    }
+});
+
+Q.Sprite.extend("Hazard", {
+    init: function (p) {
+        this._super(p, { sheet: "water" });
+
+    }
+});
+
+Q.Sprite.extend("hudkey", {
+    init: function (p) {
+        this._super(p, { sheet: "hudkeyRed" });
 
     }
 });

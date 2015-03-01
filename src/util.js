@@ -6,6 +6,22 @@ Q.Sprite.extend("Tower", {
   }
 });
 
+Q.Sprite.extend("Hazard", {
+    init: function (p) {
+        this._super(p, { sheet: "water" });
+
+    }
+});
+
+Q.Sprite.extend("Decal", {
+    init: function (p) {
+        this._super(p, { sheet: "signright" });
+
+    }
+});
+
+
+
 // Display a text box over game content.
 Q.scene("textbox", function(stage) {
 

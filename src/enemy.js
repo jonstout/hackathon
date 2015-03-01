@@ -2,7 +2,7 @@
 // Create the Enemy class to add in some baddies
 Q.Sprite.extend("Enemy",{
   init: function(p) {
-    this._super(p, { sheet: 'enemy', vx: 100 });
+    this._super(p, { sheet: 'snail', vx: 100 });
 
     // Enemies use the Bounce AI to change direction
     // whenver they run into something.
