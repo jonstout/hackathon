@@ -8,7 +8,7 @@
       ["Item", {"x": 900, "y": 10, "sheet": "tower", "objName": "keyyy"}]
     ]},
   "Jon" : {
-    "level" : "level2",
+    "level" : "level1",
     "objs" : [
       ["Enemy", {"x": 600, "y": 0, "sheet": "enemy"}],
       ["Barrier", {"x": 500, "y": 0, "sheet": "tower", "keys": ["dontgivea","keyyy"]}],
