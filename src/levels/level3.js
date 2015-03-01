@@ -1,11 +1,11 @@
 
 // Create a new scene called level 1
-Q.scene("level1",function(stage) {
+Q.scene("level3",function(stage) {
 
-  var bground = new Q.TileLayer({ dataAsset: 'level1.tmx', layerIndex: 0, sheet: 'tilemap', tileW: 72, tileH: 72, type: Q.SPRITE_NONE })
+  var bground = new Q.TileLayer({ dataAsset: 'level3.tmx', layerIndex: 0, sheet: 'tilemap', tileW: 72, tileH: 72, type: Q.SPRITE_NONE })
   stage.insert(bground)
   // Add in a tile layer, and make it the collision layer
-  stage.collisionLayer(new Q.TileLayer({ dataAsset: 'level1.tmx', layerIndex: 0, sheet: 'tilemap', tileW: 72, tileH: 72 }));
+  stage.collisionLayer(new Q.TileLayer({ dataAsset: 'level3.tmx', layerIndex: 0, sheet: 'tilemap', tileW: 72, tileH: 72 }));
 
   // Create the player and add him to the stage
   var player = stage.insert(new Q.Player());
@@ -16,7 +16,7 @@ Q.scene("level1",function(stage) {
 
   // Load objects for this level from file
   $.getJSON( "data/objects.json", function( data ) {
-    stage.loadAssets(data["level1"]);
+    stage.loadAssets(data["level3"]);
   });
 
   // Finally add in the tower goal

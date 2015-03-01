@@ -87,12 +87,12 @@
     <script>
       // Q.load can be called at any time to load additional assets
       // assets that are already loaded will be skipped
-      window.Q.load("sprites.png, sprites.json, level1.tmx, tilemap.png, tiles.png, objects.json, player1.png",
+      window.Q.load("sprites.png, sprites.json, level1.tmx, level2.tmx, level3.tmx, tilemap.png, tiles.png, objects.json, player1.png",
       // The callback will be triggered when everything is loaded
       function() {
         // Sprites sheets can be created manually
         Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
-        Q.sheet("tilemap","tilemap.png", { tilew: 70, tileh: 70 });
+        Q.sheet("tilemap","tilemap.png", { tilew: 72, tileh: 72 });
         Q.sheet("player1","player1.png", { tilew: 47, tileh: 66 });
 
         // Or from a .json asset that defines sprite locations
@@ -164,6 +164,6 @@
         </div>
       </div>
     </div>
-    
+
   </body>
 </html>
