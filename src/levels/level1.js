@@ -14,9 +14,9 @@ Q.scene("level1",function(stage) {
   // to follow the player.
   stage.add("viewport").follow(player);
 
-  // Load enemies from file
-  $.getJSON( "data/enemies.json", function( data ) {
-    stage.loadAssets(data["enemies"]);
+  // Load objects for this level from file
+  $.getJSON( "data/objects.json", function( data ) {
+    stage.loadAssets(data["level1"]);
   });
 
   // Finally add in the tower goal
