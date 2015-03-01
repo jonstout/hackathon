@@ -1,8 +1,9 @@
-﻿<html>
+<!DOCTYPE html>﻿
+<html>
   <head>
     <!-- Pull the engine from the Quintus CDN or load it locally -->
     <!-- (use quintus-all.min.js for production) -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -72,7 +73,7 @@
       }));
 
       var button = container.insert(new Q.UI.Button({ x: 0, y: 0, fill: "#CCCCCC", label: "Play Again" }))
-      var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, label: stage.options.label }));
+      var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, label: stage.options.label }))
       // When the button is clicked, clear all the stages
       // and restart the game.
       button.on("click",function() {
@@ -93,16 +94,16 @@
       // The callback will be triggered when everything is loaded
       function() {
         // Sprites sheets can be created manually
-        Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 });
-        Q.sheet("tilemap","tilemap.png", { tilew: 72, tileh: 72 });
-        Q.sheet("player1", "player1.png", { tilew: 47, tileh: 66 });
-        Q.sheet("keyRed", "keyRed.png", { tilew: 70, tileh: 70 });
-        Q.sheet("lockred", "lock_red.png", { tilew: 70, tileh: 70 });
-        Q.sheet("keyBlue", "keyBlue.png", { tilew: 70, tileh: 70 });
-        Q.sheet("lockblue", "lock_blue.png", { tilew: 70, tileh: 70 });
+        Q.sheet("tiles","tiles.png", { tilew: 32, tileh: 32 })
+        Q.sheet("tilemap","tilemap.png", { tilew: 72, tileh: 72 })
+        Q.sheet("player1", "player1.png", { tilew: 47, tileh: 66 })
+        Q.sheet("keyRed", "keyRed.png", { tilew: 70, tileh: 70 })
+        Q.sheet("lockred", "lock_red.png", { tilew: 70, tileh: 70 })
+        Q.sheet("keyBlue", "keyBlue.png", { tilew: 70, tileh: 70 })
+        Q.sheet("lockblue", "lock_blue.png", { tilew: 70, tileh: 70 })
 
         // Or from a .json asset that defines sprite locations
-        Q.compileSheets("sprites.png","sprites.json");
+        Q.compileSheets("sprites.png","sprites.json")
 
         // Finally, call stageScene to run the game
         Q.stageScene("mainMenu");
@@ -160,7 +161,7 @@
                 <label for="levelSelect">Level</label>
                 <select class="form-control" id="levelSelect"></select>
               </div>
-              <hr/>
+
 
               <h4>New game item</h4>
               <div class="form-group">
@@ -178,7 +179,7 @@
               <div class="form-group">
                 <button type="button" class="btn btn-default" id="itemSubmit">+</button>
               </div>
-              <hr/>
+
 
               <h4>New game barrier</h4>
               <div class="form-group">
@@ -208,7 +209,7 @@
               <div class="form-group">
                 <button type="button" class="btn btn-default" id="barrierSubmit">+</button>
               </div>
-              <hr/>
+
 
               <div class="form-group">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
