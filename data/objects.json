@@ -1,0 +1,14 @@
+{
+  "level1" : [
+    ["Enemy", {"x": 700, "y": 0, "sheet": "enemy"}],
+    ["Barrier", {"x": 508, "y": 0, "sheet": "tower", "keys": ["dontgivea","keyyy"]}],
+    ["Item", {"x": 700, "y": 0, "sheet": "tower", "objName": "dontgivea"}],
+    ["Item", {"x": 900, "y": 10, "sheet": "tower", "objName": "keyyy"}]
+  ],
+  "level2" : [
+  	["Enemy", {"x": 600, "y": 0, "sheet": "enemy"}],
+    ["Barrier", {"x": 500, "y": 0, "sheet": "tower", "keys": ["dontgivea","keyyy"]}],
+    ["Item", {"x": 600, "y": 30, "sheet": "tower", "objName": "dontgivea"}],
+    ["Item", {"x": 800, "y": 40, "sheet": "tower", "objName": "keyyy"}]
+  ]
+}
