@@ -6,11 +6,6 @@ Q.Sprite.extend("Tower", {
   }
 });
 
-Q.Sprite.extend("Key", {
-    init: function (p) {
-        this._super(p, { sheet: 'keyRed' });
-    }
-});
 
 // Display a text box over game content.
 Q.scene("textbox", function(stage) {

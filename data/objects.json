@@ -2,13 +2,13 @@
   "Carter" : {
     "level" : "level1",
     "objs" : [
-      ["Barrier", {"x": 508, "y": 0, "sheet": "tower", "keys": ["dontgivea"]}],
+      ["Barrier", {"x": 1547, "y": 468, "sheet": "lockred", "keys": ["dontgivea"]}],
       ["Item", {"x": 320, "y": 260, "sheet": "keyRed", "objName": "dontgivea"}]
     ]},
   "Jon" : {
     "level" : "level2",
     "objs" : [
-      ["Barrier", {"x": 500, "y": 0, "sheet": "tower", "keys": ["keyyy"]}],
+      ["Barrier", {"x": 2340, "y": 108, "sheet": "lockblue", "keys": ["keyyy"]}],
       ["Item", {"x": 250, "y": 690, "sheet": "keyBlue", "objName": "keyyy"}]
     ]}
 }
