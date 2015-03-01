@@ -4,12 +4,10 @@ function loadScene(data) {
   levelName = data["level"]
   levelObjs = data["objs"]
   levelTMX = levelName + ".tmx"
-  levelEnemies = []
+  var levelEnemies = []
 
-  $.getJSON( "./data/enemies.json", function(data) {
-    levelEnemies = data[levelName]
-  });
 
+  console.log(levelEnemies)
   // Create a scene for this level
   Q.scene(levelName, function(stage) {
     // Lay down the background
@@ -28,7 +26,9 @@ function loadScene(data) {
 
     // Load objects for this level from file
     stage.loadAssets(levelObjs)
-    stage.loadAssets(levelEnemies)
+    $.getJSON( "./data/enemies.json", function(data) {
+      stage.loadAssets(data[levelName])
+    });
 
     // Finally add in the tower goal
     stage.insert(new Q.Tower({ x: 180, y: 50 }));
