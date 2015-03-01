@@ -33,28 +33,25 @@ function loadScene(data) {
     // Finally add in the tower goal
     stage.insert(new Q.Tower({ x: 180, y: 50 }));
   });
-
-
-
+  
   Q.stageScene(levelName)
 }
 
 function loadCharacterSelection() {
   // Load objects for this level from file
-  $.getJSON( "./data/objects.json", function(data) {
-    $.each(data, function(key, value) {
-      var x = document.getElementById("characterSelect")
-      var option = document.createElement("option")
-      option.text = key
-      x.add(option)
+    $.getJSON('data/objects.json', function (data) {
+      $.each(data, function(key, value) {
+        var x = document.getElementById("characterSelect")
+        var option = document.createElement("option")
+        option.text = key
+        x.add(option)
+      });
+      userStories = data
     });
-  });
 }
 
 function submitCharacterSelection() {
   var x = document.forms["selectCharacterModalForm"]["characterSelect"].value;
-  $.getJSON( "./data/objects.json", function(data) {
-    loadScene(data[x])
-    document.getElementById("game").focus()
-  });
+  loadScene(userStories[x])
+  document.getElementById("game").focus()
 }

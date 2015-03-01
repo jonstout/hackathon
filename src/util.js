@@ -6,6 +6,7 @@ Q.Sprite.extend("Tower", {
   }
 });
 
+
 // Display a text box over game content.
 Q.scene("textbox", function(stage) {
 
