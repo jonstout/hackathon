@@ -3,6 +3,7 @@ function delItemFromList(id) {
   var element = document.getElementById(id);
   element.parentNode.removeChild(element);
 
+  tempGameObjects[index] = []
 }
 
 function addBarrierToList() {
@@ -63,7 +64,27 @@ function addItem(name, x, y) {
 // Submit all barriers and items from a user's story (as stored in tempGameObjects) to a new
 // objects.json entry that can be staged as its own level
 // Reset tempGameObjects
-function submitUserStory(name, lvl) {
+function submitUserStory() {
+  name = document.getElementById("characterName").value
+  lvl = document.getElementById("levelSelect").value
+
+  $.getJSON('http://127.0.0.1:8888/data/objects.json', function (data) {
+    userStories = data
+
+    gameObject = { "level" : lvl, "objs" : []}
+    for (i = 0; i < tempGameObjects.length; i++) {
+      gameObject.objs[i] = tempGameObjects[i]
+    }
+    userStories[name] = gameObject
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('PUT', 'http://127.0.0.1:8888/data/objects.json', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+      // do something to response
+    };
+    xhr.send(JSON.stringify(userStories))
+  });
 
 
 }

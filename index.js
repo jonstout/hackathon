@@ -9,10 +9,38 @@ var url = require('url')
 var fs = require('fs')
 
 http.createServer( function(request, response) {
-    var pathname = url.parse(request.url).pathname;
-    pathname = path.join(process.cwd(),pathname);
 
-    fs.exists(pathname, function(exists) {
+  /*
+  if (request.url == '/data/objects.json') {
+    if (request.method == "GET") {
+      fs.readFile('./data/objects.json', function(err, text) {
+        response.setHeader("Content-Type", "text/json");
+        response.end(text)
+      })
+    } else {
+      if (request.method == "PUT") {
+        fs.open('./data/objects.json', 'w', function(err, text) {
+          if (err) {
+            response.setHeader("Content-Type", "text/json");
+            response.end("Error")
+          } else {
+            fs.writeFile('./data/objects.json', text, function (err) {
+              if (err) throw err;
+              console.log('It\'s saved!');
+              fs.close(data, function() {
+                console.log('written success');
+              })
+            })
+          }
+        })
+      }
+    }
+  }*/
+
+  var pathname = url.parse(request.url).pathname;
+  pathname = path.join(process.cwd(), pathname);
+
+  fs.exists(pathname, function(exists) {
 	// If top level route to index.html
 	if (pathname == process.cwd() + "/") {
 	    pathname += 'index.html';
@@ -20,15 +48,44 @@ http.createServer( function(request, response) {
 	// If path exists serve else return 404
 	if (exists) {
 	    fs.readFile(pathname, "binary", function(err, file) {
-		if (err) {
-		    response.writeHead(500, {"Content-Type": "text/plain"});
-		    response.write(err, "\n");
-		    response.end();
-		} else {
-		    response.writeHeader(200);
-		    response.write(file, "binary");
-		    response.end();
-		}
+    		if (err) {
+    		    response.writeHead(500, {"Content-Type": "text/plain"});
+    		    response.write(err, "\n");
+    		    response.end();
+        } else {
+          // Check for objects.json
+          if (pathname == path.join(process.cwd(), "/data/objects.json")) {
+            if (request.method == "GET") {
+              fs.readFile('./data/objects.json', function(err, text) {
+                response.writeHead(200, {"Content-Type": "text/json"});
+                response.end(text)
+              })
+            } else if (request.method == "PUT") {
+              // Painfully parsing json :'(
+              var jsonString = '';
+              request.on('data', function (data) {
+                jsonString += data;
+              });
+              
+              request.on('end', function () {
+                fs.open("./data/objects.json", "w", function(err, text) {
+                  if (err) {
+                    // Whoops
+                  } else {
+                    fs.writeFile("./data/objects.json", jsonString, function (err) {
+                      if (err) throw err;
+                      console.log("Saved JSON")
+                    })
+                  }
+                })
+              });
+            }
+          }
+
+  		    response.writeHeader(200);
+  		    response.write(file, "binary");
+  		    response.end();
+    		}
 	    });
 	} else {
 	    console.log("No route found for", pathname);
