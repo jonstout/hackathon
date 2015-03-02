@@ -18,41 +18,39 @@ Q.Sprite.extend("Item", {
 
 // Create the Enemy class to add in some baddies
 Q.Sprite.extend("Barrier",{
-  init: function(p) {
-    this._super(p, { sheet: 'tower', keys: ["a-key"] });
-
-    // Listen for a sprite collision, if it's the player,
-    // end the game unless the enemy is hit on top
-    this.on("hit.sprite",function(collision) {
-      if(collision.obj.isA("Player")) {
-        Q.stage().pause()
-
-        // Check if Player has all the items needed to pass Barrier
-        hasAll = true
-        keyIndexes = this.p.keys
-
-        for (i = 0; i < keyIndexes.length; i++) {
-          var keyIndex = collision.obj.p.keys.indexOf(keyIndexes[i])
-          if (keyIndex == -1) {
-            Q.stageScene("textbox", window.textboxScene, { label: this.p.badmsg})
-            hasAll = false
-            break
-          } else {
-            keyIndexes[i] = keyIndex
-          }
-        }
-
-        if (hasAll) {
-          for (i = 0; i < keyIndexes.length; i++) {
-            collision.obj.p.keys.splice(keyIndexes[i], 1) // Remove key from Player.keys
-          }
-            Q.stageScene("textbox", window.textboxScene, { label: this.p.okmsg})
-            this.destroy()
-        }
-      }
-    });
-  }
-});
+    init: function(p) {
+	this._super(p, { sheet: 'tower',
+			 keys: ["a-key"],
+			 badmsg: "I'm sorry to see you cry.",
+			 okmsg: "You're the best dude."
+		       })
+	
+	// Listen for a sprite collision, if it's the player,
+	// end the game unless the enemy is hit on top
+	this.on("hit.sprite",function(collision) {
+	    if(collision.obj.isA("Player")) {
+		// If Player is missing any keys show badmsg and return.
+		console.log("Checking for player keys.")
+		for (i = 0; i < this.p.keys.length; i++) {
+		    index = collision.obj.p.keys.indexOf(this.p.keys[i])
+		    if (index == -1) {
+			Q.stage().pause()
+			Q.stageScene("textbox", window.textboxScene, { label: this.p.badmsg })
+			return
+		    }
+		}
+		console.log("Player has all keys.")
+		// Player has all keys. Remove from player inventory.
+		for (i = 0; i < this.p.keys.length; i++) {
+		    Q.stage().pause()
+		    Q.stageScene("textbox", window.textboxScene, { label: this.p.okmsg })
+		    collision.obj.p.keys.splice(this.p.keys[i], 1)
+		    this.destroy()
+		}
+	    }
+	})
+    }
+})
 
 Q.Sprite.extend("Goal", {
     init: function(p) {
