@@ -17,7 +17,7 @@ Q.Sprite.extend("Player", {
         // hit.sprite is called everytime the player collides with a sprite
         this.on("hit.sprite", function (collision) {
             if (collision.obj.isA("Hazard")) {
-                Q.stageScene("endGame", 1, { label: "Game Over" });
+                Q.stageScene("endGame", window.textboxScene, { label: "Game Over" });
                 this.destroy();
             }
             // Check the collision, if it's the Tower, you win!
